@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2 Million Drops — Ultra Clear Pre-Registration</title>
+<meta name="description" content="Add your drop. Pre-register for safe, trusted, easy access to clean water with Ultra Clear.">
+<style>
+  :root{
+    --void:#010810; --abyss:#030F1E; --royal:#051C36;
+    --sapphire:#0D4FA8; --glacier:#00B8D9; --crystal:#00E5FF; --mist:#80DEEA;
+    --white:#FFFFFF; --w60:rgba(255,255,255,.62); --w35:rgba(255,255,255,.35); --w12:rgba(255,255,255,.12);
+    --ok:#10B981; --warn:#F59E0B; --bad:#EF4444;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:radial-gradient(120% 80% at 50% 0%,var(--royal),var(--void) 60%);color:var(--white);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;min-height:100vh}
+  .wrap{max-width:980px;margin:0 auto;padding:24px 16px 40px;display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+  @media(min-width:820px){.wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;padding-top:44px}}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--crystal);font-weight:700}
+  h1{font-size:28px;line-height:1.15;margin:8px 0;font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--crystal)}
+  .lede{color:var(--w60);margin:0 0 6px}
+
+  /* ---------- counter ---------- */
+  .meter{text-align:center}
+  .glassbox{position:relative;width:min(260px,70vw);margin:10px auto 0}
+  .glassbox svg{display:block;width:100%;height:auto;overflow:hidden}
+  .glassbox svg.drop{width:20px;height:28px;overflow:visible}
+  #water{transition:transform 1.8s cubic-bezier(.2,.8,.2,1)}
+  .wave{animation:wave 5s linear infinite}
+  @keyframes wave{to{transform:translateX(-100px)}}
+  .drop{position:absolute;left:50%;top:-34px;width:20px;height:28px;margin-left:-10px;opacity:0;pointer-events:none}
+  .drop.fall{animation:fall 1.1s cubic-bezier(.5,0,.9,.5) forwards}
+  @keyframes fall{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translateY(var(--fall,180px)) scale(1)}}
+  .count{font-size:46px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-top:14px;line-height:1}
+  .count small{display:block;font-size:13px;font-weight:500;letter-spacing:0;color:var(--w60);margin-top:6px}
+  .stage{margin-top:14px;font-size:13px;color:var(--mist)}
+  .bar{height:8px;border-radius:99px;background:var(--w12);overflow:hidden;margin:14px auto 6px;max-width:340px}
+  .bar i{display:block;height:100%;width:0;min-width:0;background:linear-gradient(90deg,var(--glacier),var(--crystal));border-radius:99px;transition:width 1.6s}
+  .barlabel{font-size:12px;color:var(--w60);font-variant-numeric:tabular-nums}
+  .preview{display:none;margin:12px auto 0;max-width:340px;font-size:12px;color:#1a1200;background:var(--warn);border-radius:8px;padding:6px 10px;font-weight:600}
+
+  /* ---------- form ---------- */
+  .card{background:rgba(3,15,30,.78);border:1px solid var(--w12);border-radius:18px;padding:22px 18px}
+  .card h2{font-size:19px;margin:0 0 14px}
+  label,legend{display:block;font-size:13px;font-weight:600;color:var(--mist);margin:0 0 6px;padding:0}
+  .f{margin-bottom:14px}
+  input[type=text],input[type=tel],select{width:100%;padding:13px 12px;border-radius:10px;border:1px solid var(--w35);
+    background:var(--abyss);color:var(--white);font:inherit}
+  input:focus-visible,select:focus-visible,button:focus-visible,.chip input:focus-visible+span{outline:2px solid var(--crystal);outline-offset:2px}
+  .row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:8px}
+  fieldset{border:0;padding:0;margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{position:relative;margin:0}
+  .chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+  .chip span{display:block;padding:10px 14px;border-radius:99px;border:1px solid var(--w35);font-size:14px;font-weight:600;color:var(--white);user-select:none}
+  .chip input:checked+span{background:var(--crystal);border-color:var(--crystal);color:var(--void)}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;font-weight:400;color:var(--w60);margin-bottom:16px}
+  .consent input{margin-top:3px;width:18px;height:18px;flex:none;accent-color:var(--glacier)}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  button.go{width:100%;padding:15px;border:0;border-radius:12px;font:inherit;font-weight:800;font-size:16px;cursor:pointer;
+    color:var(--void);background:linear-gradient(135deg,var(--crystal),var(--glacier))}
+  button.go[disabled]{opacity:.55;cursor:wait}
+  .msg{min-height:20px;font-size:13.5px;margin-top:10px}
+  .msg.err{color:#FCA5A5}.msg.ok{color:#6EE7B7}
+  .done{display:none;text-align:center}
+  .done .num{font-size:34px;font-weight:800;color:var(--crystal);font-variant-numeric:tabular-nums}
+  .share{display:inline-block;margin-top:14px;padding:12px 18px;border-radius:12px;background:#25D366;color:#03210f;font-weight:800;text-decoration:none}
+  .fine{font-size:11.5px;color:var(--w35);margin-top:14px}
+  @media(prefers-reduced-motion:reduce){.wave,.drop.fall{animation:none}#water,.bar i{transition:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <section class="meter" aria-labelledby="h">
+    <div class="eyebrow">Ultra Clear · The 2 Million Drops Pledge</div>
+    <h1 id="h">Every registration is <em>one drop</em>. We are filling the glass to 2,000,000.</h1>
+    <p class="lede">Safe, trusted, easy access to clean water. Add yours.</p>
+
+    <div class="glassbox">
+      <svg id="dropTpl" class="drop" viewBox="0 0 20 28" aria-hidden="true"><path d="M10 0C10 0 0 13 0 18.5A10 9.5 0 0 0 20 18.5C20 13 10 0 10 0Z" fill="#7DEBFF"/></svg>
+      <svg viewBox="0 0 200 262" role="img" aria-labelledby="glassDesc">
+        <title id="glassDesc">Glass of water showing pre-registration progress</title>
+        <defs>
+          <clipPath id="inner"><path d="M36 22H164L150 236Q149 244 141 244H59Q51 244 50 236Z"/></clipPath>
+          <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7DEBFF" stop-opacity=".95"/><stop offset="1" stop-color="#0D7FC8" stop-opacity=".9"/>
+          </linearGradient>
+        </defs>
+        <g clip-path="url(#inner)">
+          <g id="water" style="transform:translateY(244px)">
+            <path class="wave" fill="url(#wg)" d="M0 6Q25 0 50 6T100 6T150 6T200 6T250 6T300 6T350 6T400 6V300H0Z"/>
+          </g>
+        </g>
+        <path d="M30 14H170L155 238Q154 250 142 250H58Q46 250 45 238Z" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M46 34L57 226" stroke="rgba(255,255,255,.28)" stroke-width="4" stroke-linecap="round"/>
+        <g stroke="rgba(255,255,255,.4)" stroke-width="1.5"><path d="M158 77.5h9"/><path d="M155 133h9"/><path d="M151 188.5h9"/></g>
+      </svg>
+    </div>
+
+    <div class="count" aria-live="polite"><span id="count">—</span><small>people pre-registered · goal 2,000,000</small></div>
+    <div class="stage" id="stage">&nbsp;</div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <div class="barlabel" id="barlabel">&nbsp;</div>
+    <div class="preview" id="preview">PREVIEW MODE — not connected to the register yet. Numbers here are not real.</div>
+  </section>
+
+  <section class="card">
+    <form id="form" novalidate>
+      <h2>Add your drop</h2>
+      <div class="f"><label for="name">Your name</label>
+        <input id="name" type="text" autocomplete="name" maxlength="80" required></div>
+
+      <div class="f"><label for="phone">Phone number</label>
+        <div class="row">
+          <select id="country" aria-label="Country">
+            <option value="Kenya" data-dial="254">Kenya +254</option>
+            <option value="Tanzania" data-dial="255">Tanzania +255</option>
+            <option value="Rwanda" data-dial="250">Rwanda +250</option>
+            <option value="Malawi" data-dial="265">Malawi +265</option>
+            <option value="Other" data-dial="">Other</option>
+          </select>
+          <input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0712 345 678" maxlength="20" required>
+        </div></div>
+
+      <div class="f"><label for="loc">Location (town or area)</label>
+        <input id="loc" type="text" autocomplete="address-level2" maxlength="80" placeholder="e.g. Kitengela" required></div>
+
+      <fieldset><legend>I need clean water for: <span style="font-weight:400;color:var(--w60)">(pick all that apply)</span></legend>
+        <div class="chips" id="needs">
+          <label class="chip"><input type="checkbox" value="Drinking"><span>Drinking</span></label>
+          <label class="chip"><input type="checkbox" value="Bathing"><span>Bathing</span></label>
+          <label class="chip"><input type="checkbox" value="Cooking"><span>Cooking</span></label>
+          <label class="chip"><input type="checkbox" value="Office"><span>Office</span></label>
+          <label class="chip"><input type="checkbox" value="Community"><span>Community</span></label>
+        </div></fieldset>
+
+      <label class="consent"><input id="consent" type="checkbox" required>
+        <span>I agree that Ultra Clear Filtration Technologies may store these details and contact me about the app and clean-water access. I can ask for my details to be deleted at any time.</span></label>
+
+      <div class="hp" aria-hidden="true"><label>Leave empty<input id="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <button class="go" id="go" type="submit">Add my drop</button>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+
+    <div class="done" id="done">
+      <div class="eyebrow">You are in</div>
+      <div class="num" id="myNum"></div>
+      <p id="doneText" style="margin:6px 0 0;color:var(--w60)"></p>
+      <a class="share" id="share" target="_blank" rel="noopener">Share on WhatsApp</a>
+    </div>
+    <p class="fine">Ultra Clear Filtration Technologies Ltd. One registration per phone number.</p>
+  </section>
+</main>
+
+<script>
+/* ============================================================
+   CONFIG — the only lines you edit
+   ============================================================ */
+var UC_ENDPOINT = "PASTE_YOUR_PREREG_EXEC_URL_HERE";   // Apps Script Web App URL ending in /exec
+var UC_GOAL     = 2000000;
+var UC_STAGES   = [100, 1000, 10000, 100000, 500000, 2000000]; // the glass fills toward the next one of these
+var UC_REFRESH_SECONDS = 60;
+/* ============================================================ */
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var LIVE = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(UC_ENDPOINT);
+  var shown = 0, current = null;
+  var fmt = function(n){ return Math.round(n).toLocaleString("en-US"); };
+  var store = {
+    get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+    set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  };
+
+  /* ---- rendering ---- */
+  function render(n, withDrop){
+    n = Math.max(0, Math.floor(n));
+    var prev = current; current = n;
+    var target = UC_STAGES[UC_STAGES.length-1];
+    for (var i=0;i<UC_STAGES.length;i++){ if (n < UC_STAGES[i]) { target = UC_STAGES[i]; break; } }
+    var f = Math.min(1, n/target);
+    if (n > 0) f = Math.max(f, 0.02);            // a single drop must be visible; the numbers below stay exact
+    var y = 244 - f*222;                       // 244 = empty, 22 = brim
+    $("water").style.transform = "translateY(" + y + "px)";
+    $("stage").textContent = n >= UC_GOAL ? "The glass is full. Thank you."
+      : "This glass fills at " + fmt(target) + " · " + fmt(target-n) + " drops to go";
+    var pct = Math.min(100, n/UC_GOAL*100);
+    $("bar").style.width = pct + "%";
+    $("barlabel").textContent = (pct < 0.01 && n > 0 ? pct.toFixed(5) : pct.toFixed(2)) + "% of the 2,000,000 goal";
+    tween(n);
+    if (withDrop || (prev !== null && n > prev)) drop(y);
+  }
+  function tween(to){
+    var from = shown, t0 = null;
+    if (matchMedia("(prefers-reduced-motion:reduce)").matches || from === to){ shown = to; $("count").textContent = fmt(to); return; }
+    requestAnimationFrame(function step(t){
+      if (!t0) t0 = t;
+      var p = Math.min(1,(t-t0)/1200), e = 1-Math.pow(1-p,3);
+      shown = from + (to-from)*e; $("count").textContent = fmt(shown);
+      if (p < 1) requestAnimationFrame(step); else shown = to;
+    });
+  }
+  function drop(y){
+    var d = $("dropTpl"), box = d.parentNode.getBoundingClientRect();
+    d.style.setProperty("--fall", Math.max(60, box.height*(y/262)+34) + "px");
+    d.classList.remove("fall"); void d.getBoundingClientRect(); d.classList.add("fall");
+  }
+
+  /* ---- transport: GET + JSONP, so we get the server's real verdict ---- */
+  function call(params, cb){
+    var name = "ucp_" + Date.now() + Math.floor(Math.random()*1e5), done = false;
+    var s = document.createElement("script");
+    var timer = setTimeout(function(){ finish(null); }, 15000);
+    function finish(data){
+      if (done) return; done = true; clearTimeout(timer);
+      window[name] = function(){}; s.remove(); cb(data);
+    }
+    window[name] = finish;
+    s.onerror = function(){ finish(null); };
+    params.callback = name;
+    s.src = UC_ENDPOINT + "?" + new URLSearchParams(params).toString();
+    document.head.appendChild(s);
+  }
+  function refresh(){
+    if (!LIVE) return;
+    call({action:"count"}, function(r){ if (r && r.ok && typeof r.count === "number") render(r.count); });
+  }
+
+  /* ---- form ---- */
+  function normPhone(raw, dial){
+    var d = String(raw).replace(/\D/g,"");
+    if (!dial){ return (d.length >= 8 && d.length <= 15) ? "+" + d.replace(/^00/,"") : null; }
+    if (d.indexOf("00"+dial) === 0) d = d.slice(2+dial.length);
+    else if (d.indexOf(dial) === 0 && d.length > 9) d = d.slice(dial.length);
+    d = d.replace(/^0+/,"");
+    return d.length === 9 ? "+" + dial + d : null;
+  }
+  function say(text, cls){ var m = $("msg"); m.textContent = text; m.className = "msg " + (cls||""); }
+  function finished(num, dup){
+    $("form").style.display = "none"; $("done").style.display = "block";
+    $("myNum").textContent = "Drop #" + fmt(num);
+    $("doneText").textContent = dup ? "This phone number was already registered — your drop is safely in the glass."
+      : "Thank you. Your drop is in the glass. We will be in touch when the app opens.";
+    var url = location.origin + location.pathname + "?src=wa-share";
+    $("share").href = "https://wa.me/?text=" + encodeURIComponent("I just added my drop to Ultra Clear's 2 Million pledge for clean water. Add yours: " + url);
+  }
+
+  $("form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var opt = $("country").selectedOptions[0];
+    var name = $("name").value.trim().replace(/\s+/g," ");
+    var phone = normPhone($("phone").value, opt.getAttribute("data-dial"));
+    var loc = $("loc").value.trim().replace(/\s+/g," ");
+    var needs = [].map.call(document.querySelectorAll("#needs input:checked"), function(c){ return c.value; });
+    if (name.length < 2){ say("Please enter your name.","err"); $("name").focus(); return; }
+    if (!phone){ say("That phone number does not look right for " + opt.value + ". Please check it.","err"); $("phone").focus(); return; }
+    if (loc.length < 2){ say("Please tell us your town or area.","err"); $("loc").focus(); return; }
+    if (!needs.length){ say("Pick at least one thing you need clean water for.","err"); return; }
+    if (!$("consent").checked){ say("Please tick the box so we are allowed to keep your details.","err"); $("consent").focus(); return; }
+
+    if (!LIVE){                       // preview only — nothing is stored
+      render((current||0)+1, true); finished(current, false); return;
+    }
+    $("go").disabled = true; say("Adding your drop…");
+    call({formType:"presign", name:name, phone:phone, country:opt.value, location:loc,
+          needs:needs.join(", "), consent:"Y", website:$("website").value,
+          src:new URLSearchParams(location.search).get("src") || ""}, function(r){
+      $("go").disabled = false;
+      if (r && r.ok){
+        store.set("uc_prereg_num", String(r.number));
+        render(r.count, !r.duplicate); finished(r.number, !!r.duplicate); return;
+      }
+      say(r && r.error ? r.error : "We could not reach the register. Your details are still here — please check your connection and tap again.","err");
+    });
+  });
+
+  /* ---- start ---- */
+  if (!LIVE){ $("preview").style.display = "block"; render(0); }
+  else {
+    var mine = store.get("uc_prereg_num");
+    if (mine) finished(Number(mine), true), $("doneText").textContent = "You have already added your drop on this device. Thank you.";
+    refresh(); setInterval(function(){ if (!document.hidden) refresh(); }, UC_REFRESH_SECONDS*1000);
+  }
+})();
+</script>
+</body>
+</html>
